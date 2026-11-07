@@ -1,3 +1,6 @@
+> ⚠️ RedBoard was built as part of another project of mine, and that project is finished, so I'm **not actively developing it any more**. It works and is published as is.
+> You're welcome to fork it, adapt it, or open a pull request. Under the MIT license you can use it however you like. I may not review issues or PRs, though, so a fork is the surest way to take it further.
+
 # RedBoard
 
 **A local, dependency-free diagram editor that people and AI can both edit.**
@@ -88,12 +91,6 @@ const fs = require('node:fs');
 const { validate } = require('./format.js');
 validate(JSON.parse(fs.readFileSync('examples/architecture.redboard.json', 'utf8')));
 ```
-
-## Status & contributing
-
-RedBoard was built as part of another project of mine, and that project is finished, so I'm **not actively developing it any more**. It works and is published as is.
-
-You're welcome to fork it, adapt it, or open a pull request. Under the MIT license you can use it however you like. I may not review issues or PRs, though, so a fork is the surest way to take it further.
 
 ## License
 
