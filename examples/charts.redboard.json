@@ -1,0 +1,128 @@
+{
+  "format": "redboard",
+  "version": 1,
+  "name": "Groups and charts",
+  "elements": [
+    {
+      "id": "frame",
+      "type": "group",
+      "x": 50,
+      "y": 50,
+      "w": 1050,
+      "h": 440,
+      "text": "Project overview",
+      "style": {
+        "stroke": "#303547",
+        "fill": "transparent",
+        "strokeWidth": 2,
+        "dash": "dashed",
+        "fontSize": 18,
+        "opacity": 1,
+        "routing": "straight"
+      }
+    },
+    {
+      "id": "allocation",
+      "type": "pie",
+      "x": 80,
+      "y": 110,
+      "w": 440,
+      "h": 320,
+      "text": "Time allocation",
+      "style": {
+        "stroke": "#303547",
+        "fill": "#ffffff",
+        "strokeWidth": 2,
+        "dash": "solid",
+        "fontSize": 18,
+        "opacity": 1,
+        "routing": "straight"
+      },
+      "groupId": "frame",
+      "data": [
+        {
+          "label": "Design",
+          "value": 45,
+          "color": "#7e829b"
+        },
+        {
+          "label": "Build",
+          "value": 35,
+          "color": "#db594f"
+        },
+        {
+          "label": "Review",
+          "value": 20,
+          "color": "#438c78"
+        }
+      ]
+    },
+    {
+      "id": "progress",
+      "type": "chart",
+      "x": 550,
+      "y": 110,
+      "w": 500,
+      "h": 320,
+      "text": "Weekly progress",
+      "style": {
+        "stroke": "#303547",
+        "fill": "#ffffff",
+        "strokeWidth": 2,
+        "dash": "solid",
+        "fontSize": 18,
+        "opacity": 1,
+        "routing": "straight"
+      },
+      "groupId": "frame",
+      "data": [
+        {
+          "label": "Planned",
+          "color": "#7e829b",
+          "points": [
+            [
+              1,
+              10
+            ],
+            [
+              2,
+              20
+            ],
+            [
+              3,
+              30
+            ],
+            [
+              4,
+              40
+            ]
+          ]
+        },
+        {
+          "label": "Actual",
+          "color": "#db594f",
+          "points": [
+            [
+              1,
+              8
+            ],
+            [
+              2,
+              18
+            ],
+            [
+              3,
+              27
+            ],
+            [
+              4,
+              42
+            ]
+          ]
+        }
+      ],
+      "xLabel": "Week",
+      "yLabel": "Completed tasks"
+    }
+  ]
+}

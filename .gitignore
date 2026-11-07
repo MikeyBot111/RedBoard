@@ -1,0 +1,13 @@
+# Screenshots written by the browser tests
+preview.png
+preview-small.png
+charts-preview.png
+
+# Dependencies / tooling
+node_modules/
+.claude/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini

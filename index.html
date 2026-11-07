@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>RedBoard — ideas, connected</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header><a class="brand" href="#" aria-label="RedBoard home"><span
+        class="brand-mark">r<span>•</span></span>RedBoard</a>
+    <input id="boardName" aria-label="Board name" value="A little space for big ideas">
+    <div class="header-actions"><button
+        id="newBoard">New</button><button id="openFile">↥ Open</button><button id="saveFile" class="primary">↓ Save
+        board</button></div>
+  </header>
+  <main>
+    <aside class="inspector">
+      <h2 id="selectionTitle" hidden></h2>
+      <label>Stroke</label>
+      <div class="swatches" id="strokeSwatches"></div>
+      <div class="color-row"><input type="color" id="stroke" value="#303547" aria-label="Stroke color"><span>Custom
+          color</span></div>
+      <label>Fill</label>
+      <div class="swatches" id="fillSwatches"></div>
+      <div class="color-row"><input type="color" id="fill" value="#e5e9fc" aria-label="Fill color"><button
+          id="noFill">No fill</button></div>
+      <div class="field-row">
+        <div><label for="strokeWidth">Weight</label><select id="strokeWidth">
+            <option value="1">Thin</option>
+            <option value="2" selected>Regular</option>
+            <option value="4">Bold</option>
+            <option value="7">Heavy</option>
+          </select></div>
+        <div><label for="dash">Line</label><select id="dash">
+            <option value="solid">Solid</option>
+            <option value="dashed">Dashed</option>
+            <option value="dotted">Dotted</option>
+          </select></div>
+      </div>
+      <div class="field-row">
+        <div><label for="fontSize">Text size</label><select id="fontSize">
+            <option>14</option>
+            <option selected>18</option>
+            <option>24</option>
+            <option>32</option>
+            <option>48</option>
+          </select></div>
+        <div><label for="routing">Connector</label><select id="routing">
+            <option value="straight">Straight</option>
+            <option value="elbow">Elbow</option>
+            <option value="curve">Curve</option>
+          </select></div>
+      </div>
+      <label for="opacity">Opacity <span id="opacityValue">100%</span></label><input id="opacity" type="range" min="10"
+        max="100" value="100">
+      <div id="elementFields" hidden><label for="elementText">Text / label</label><textarea id="elementText" rows="3"
+          placeholder="Give this idea a name…"></textarea>
+        <div class="field-row">
+          <div><label for="elementX">X</label><input id="elementX" type="number"></div>
+          <div><label for="elementY">Y</label><input id="elementY" type="number"></div>
+        </div>
+        <div class="field-row">
+          <div><label for="elementW">Width</label><input id="elementW" type="number" min="20"></div>
+          <div><label for="elementH">Height</label><input id="elementH" type="number" min="20"></div>
+        </div>
+      </div>
+      <div id="chartFields" hidden><label for="chartData">Chart data (JSON)</label><textarea id="chartData" rows="7"
+          spellcheck="false"></textarea><button id="applyChart">Apply data</button>
+        <p id="chartError" role="alert"></p>
+      </div>
+      <div class="inspector-divider"></div>
+      <div class="field-row"><button id="addPie">Pie chart</button><button id="addChart">Line chart</button></div>
+      <div class="field-row"><button id="groupSelection">Group</button><button id="ungroup">Ungroup</button></div>
+      <div class="field-row"><button id="toBack" title="Send selected elements to back">Send back</button><button
+          id="toFront">Bring front</button></div>
+      <div class="field-row"><button id="duplicate">Duplicate</button><button id="delete" class="danger">Delete</button>
+      </div>
+      <div class="inspector-bottom"><button id="help">Shortcuts & help ↗</button></div>
+    </aside>
+    <section class="workspace" id="workspace" aria-label="Diagram workspace">
+      <nav class="toolbar" aria-label="Drawing tools"></nav>
+      <svg id="canvas" xmlns="http://www.w3.org/2000/svg" tabindex="0" aria-label="Drawing canvas"></svg>
+      <textarea id="inlineText" aria-label="Edit diagram text" hidden></textarea>
+      <div class="bottom-left">
+        <div class="control-group"><button id="zoomOut" aria-label="Zoom out">−</button><button
+            id="zoomReset">100%</button><button id="zoomIn" aria-label="Zoom in">+</button><span
+            class="separator"></span><button id="fit" title="Fit diagram to view">Fit</button></div>
+        <div class="control-group"><button id="undo" title="Undo (Ctrl+Z)">↶</button><button id="redo"
+            title="Redo (Ctrl+Shift+Z)">↷</button></div>
+      </div>
+      <div class="canvas-hint" id="canvasHint">Drag to select · Double-click to edit text · Space to pan</div>
+      <div class="bottom-right"><button id="addImage">▧ Picture</button><button id="layout">⌘ Auto
+          layout</button><button id="exportSvg">↓ SVG</button><button id="toggleSource" class="source-button">&lt;/&gt;
+          Source</button></div>
+    </section>
+    <aside class="source-panel" id="sourcePanel" hidden>
+      <div class="source-header">
+        <div>
+          <div class="eyebrow">TEXT ↔ CANVAS</div>
+          <h2>Your diagram, as code.</h2>
+        </div><button id="closeSource" aria-label="Close source panel">×</button>
+      </div>
+      <p class="muted">Edit here, or let AI take the pen.</p>
+      <p class="format-hint">One RedBoard document holds every shape, connection, drawing, and style. Edit it here or
+        with AI.</p><textarea id="source" spellcheck="false" aria-label="Diagram source"></textarea>
+      <div id="sourceError" role="alert"></div>
+      <div class="field-row"><button id="refreshSource">↻ From canvas</button><button id="applySource"
+          class="primary">Apply to canvas</button></div><button id="downloadSource">↓ Download source</button>
+    </aside>
+  </main>
+  <input type="file" id="imageInput" accept="image/png,image/jpeg,image/webp,image/gif" multiple hidden>
+  <input type="file" id="fileInput" accept=".json,.redboard,application/json" hidden>
+  <div id="toast" role="status"></div>
+  <dialog id="helpDialog"><button class="dialog-close" aria-label="Close help">×</button>
+    <div class="eyebrow">A LITTLE GUIDANCE</div>
+    <h2>Room to think. Tools to connect.</h2>
+    <p>Choose a tool and drag on the canvas. Double-click a shape to add text. Draw arrows from one shape to another to
+      keep them connected when you move things.</p>
+    <div class="shortcuts"><span>Select / Pan</span><kbd>V / H</kbd><span>Rectangle / Diamond / Ellipse</span><kbd>R / D
+        / O</kbd><span>Arrow / Line / Pen</span><kbd>A / L / P</kbd><span>Text / Sticky note</span><kbd>T /
+        N</kbd><span>Multi-select</span><kbd>Shift + click</kbd><span>Pan / Zoom</span><kbd>Space + drag /
+        Wheel</kbd><span>Undo / Redo</span><kbd>Ctrl Z / Ctrl Shift Z</kbd><span>Duplicate / Select all /
+        Save</span><kbd>Ctrl D / Ctrl A / Ctrl S</kbd><span>Delete selection</span><kbd>Delete</kbd></div>
+    <p>RedBoard uses one editable, text-based board format. The canvas and source describe the same document, including
+      drawings, colors, text, connections, and layout.</p>
+    <p class="muted">Everything runs locally. Save a board file for a portable backup.</p>
+  </dialog>
+  <script src="format.js"></script>
+  <script src="extras.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>

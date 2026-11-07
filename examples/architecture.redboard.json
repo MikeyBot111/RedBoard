@@ -1,0 +1,157 @@
+{
+  "format": "redboard",
+  "version": 1,
+  "name": "Architecture — an editable example",
+  "elements": [
+    {
+      "id": "browser",
+      "type": "rectangle",
+      "x": 80,
+      "y": 100,
+      "w": 180,
+      "h": 80,
+      "text": "Browser",
+      "style": {
+        "stroke": "#303547",
+        "fill": "#e5e9fc",
+        "strokeWidth": 2,
+        "dash": "solid",
+        "fontSize": 18,
+        "opacity": 1,
+        "routing": "straight"
+      }
+    },
+    {
+      "id": "api",
+      "type": "rectangle",
+      "x": 370,
+      "y": 100,
+      "w": 180,
+      "h": 80,
+      "text": "Application API",
+      "style": {
+        "stroke": "#303547",
+        "fill": "#dceee5",
+        "strokeWidth": 2,
+        "dash": "solid",
+        "fontSize": 18,
+        "opacity": 1,
+        "routing": "straight"
+      }
+    },
+    {
+      "id": "database",
+      "type": "ellipse",
+      "x": 660,
+      "y": 100,
+      "w": 180,
+      "h": 80,
+      "text": "Database",
+      "style": {
+        "stroke": "#303547",
+        "fill": "#fff0b8",
+        "strokeWidth": 2,
+        "dash": "solid",
+        "fontSize": 18,
+        "opacity": 1,
+        "routing": "straight"
+      }
+    },
+    {
+      "id": "worker",
+      "type": "rectangle",
+      "x": 660,
+      "y": 245,
+      "w": 180,
+      "h": 80,
+      "text": "Background worker",
+      "style": {
+        "stroke": "#303547",
+        "fill": "#ffdbd5",
+        "strokeWidth": 2,
+        "dash": "solid",
+        "fontSize": 18,
+        "opacity": 1,
+        "routing": "straight"
+      }
+    },
+    {
+      "id": "edge_1",
+      "type": "arrow",
+      "x": 0,
+      "y": 0,
+      "w": 150,
+      "h": 0,
+      "text": "request",
+      "style": {
+        "stroke": "#303547",
+        "fill": "transparent",
+        "strokeWidth": 2,
+        "dash": "solid",
+        "fontSize": 18,
+        "opacity": 1,
+        "routing": "straight"
+      },
+      "from": "browser",
+      "to": "api"
+    },
+    {
+      "id": "edge_2",
+      "type": "arrow",
+      "x": 0,
+      "y": 0,
+      "w": 150,
+      "h": 0,
+      "text": "read / write",
+      "style": {
+        "stroke": "#303547",
+        "fill": "transparent",
+        "strokeWidth": 2,
+        "dash": "solid",
+        "fontSize": 18,
+        "opacity": 1,
+        "routing": "straight"
+      },
+      "from": "api",
+      "to": "database"
+    },
+    {
+      "id": "edge_3",
+      "type": "arrow",
+      "x": 0,
+      "y": 0,
+      "w": 150,
+      "h": 0,
+      "text": "enqueue",
+      "style": {
+        "stroke": "#303547",
+        "fill": "transparent",
+        "strokeWidth": 2,
+        "dash": "dashed",
+        "fontSize": 18,
+        "opacity": 1,
+        "routing": "straight"
+      },
+      "from": "api",
+      "to": "worker"
+    },
+    {
+      "id": "note",
+      "type": "sticky",
+      "x": 80,
+      "y": 400,
+      "w": 260,
+      "h": 140,
+      "text": "AI-friendly by design\n\nEdit this JSON, then open it in RedBoard.",
+      "style": {
+        "stroke": "#303547",
+        "fill": "#fff0b8",
+        "strokeWidth": 2,
+        "dash": "solid",
+        "fontSize": 16,
+        "opacity": 1,
+        "routing": "straight"
+      }
+    }
+  ]
+}
